@@ -53,8 +53,6 @@ if we add more symbol pairs, the idea will be the same and time complexity will 
 
 -------------------------Exercise 3 done by shafi-------------------------
 
-Exercise 3 done by shafi
-
 third question merge overlap nothing but merging the overlap of arrays.
 1) first we checked intervals length is less than 1 then return intervals because there is no use of checking it.
 2) then we are sorting intervals.
