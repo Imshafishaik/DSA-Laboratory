@@ -84,7 +84,34 @@ N-degree polynomial needs n multiplications.
 2. Compare the native approach: what is the improvment?
 it reduces the number of operations.
 
+-------------------------Exercise 5 done by Anshul-------------------------
 
+fifth question is array rotation in three aproaches
+Temporary Array
+1) defined a function rotate_using_temp(). checked len(arr) and if n==0 the return arr.
+2) then did k mod n and temp = arr[-k:] + arr[:-k] assigned to temp.
+
+Rotate one by one
+1) defined a function rotate_one_by_one(). checked len(arr) and if n==0 the return arr.
+2) then did k mod n and for loop runs till k value. and another nested for loop runs and assigns arr[i] = arr[i-1]. after assigns arr[0] = last. returns arr.
+
+Reverse Segments
+1) defined a function rotate_reverse(). checked len(arr) and if n==0 the return arr.
+2) then did k mod n. function inside function reverse() and while loop runs with condition start < end.
+3) then return arr.
+
+
+1. what is the optimal time complexity achievable?
+Time Complexity: O(n)
+
+2. How does k affect the performance?
+In naive method: performance depends on k (O(nk))
+In optimal method: independent of k (still O(n))
+
+3. When would each approach be preferable?
+Temporary array → when space is not an issue
+One-by-one → only for very small k
+Reverse method → best for large arrays
 
 
 
