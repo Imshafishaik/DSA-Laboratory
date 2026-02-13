@@ -70,6 +70,19 @@ Sorting intervals: O(n log n)
 Merging intervals: O(n)
 Time Complexity: O(n log n).
 
+-------------------------Exercise 4 done by Anshul-------------------------
+
+fourth question is polynomial evaluation 
+1) we have created a function polynomial_evaluate and passing two parameters coeffs, x.
+2) then created a result variable and assigned 0 to it. 
+3) then ran a loop on coeffs, then operation result * x + coefficient. 
+4) then returned result.
+
+1. How many multiplications are needed for a degree-n polynomial?
+N-degree polynomial needs n multiplications.
+
+2. Compare the native approach: what is the improvment?
+it reduces the number of operations.
 
 
 
