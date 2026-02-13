@@ -51,3 +51,29 @@ so, n comparisions.
 if we add more symbol pairs, the idea will be the same and time complexity will be O(n).
 
 
+-------------------------Exercise 3 done by shafi-------------------------
+
+Exercise 3 done by shafi
+
+third question merge overlap nothing but merging the overlap of arrays.
+1) first we checked intervals length is less than 1 then return intervals because there is no use of checking it.
+2) then we are sorting intervals.
+3) we created empty stack merged. and took current and assigned first positioned array.
+4) then we run a loop and checked with current in if else. using Math.max() we found the bigger and assigned to current.
+5) in else condition we pushed the current. and assigned current to next.
+6) in merged stack we pushed the current and return merged.
+
+1. How many comparision operations are needed for n intervals?
+During merging approximately n comparisons.
+Sorting requires additional comparisons.
+
+2. What is the time complexity of your solution?
+Sorting intervals: O(n log n)
+Merging intervals: O(n)
+Time Complexity: O(n log n).
+
+
+
+
+
+
