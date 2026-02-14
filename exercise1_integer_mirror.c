@@ -14,7 +14,7 @@ int main(){
 
     while(n != 0){
         remainder = n % 10;          
-        reverse *= 10 + remainder;  
+        reverse = reverse * 10 + remainder;  
         n /= 10; 
     }
 
