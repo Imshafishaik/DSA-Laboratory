@@ -109,9 +109,26 @@ In naive method: performance depends on k (O(nk))
 In optimal method: independent of k (still O(n))
 
 3. When would each approach be preferable?
-Temporary array → when space is not an issue
-One-by-one → only for very small k
-Reverse method → best for large arrays
+Temporary array - when space is not an issue
+One-by-one - only for very small k
+Reverse method - best for large arrays
 
+-------------------------Exercise 6 done by Anshul-------------------------
+
+sixth question is first unique 
+A dictionary freq stores the frequency of each character.
+freq.get(ch, 0) + 1 increases the count safely.
+We scan the string again.
+The first character whose frequency is 1 is returned.
+If none found then returns -1.
+
+1. what is the space complexity of your solution?
+space complexity - O(n)
+
+2. How many passes through the string are needed?
+number of passes 2 needed
+
+3. what data structure is most efficient for this problem?
+Dictionary is the efficient. 
 
 
