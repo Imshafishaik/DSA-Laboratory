@@ -30,6 +30,15 @@ Track repeated characters
 Count total alphabetic characters
 Minimal number of passes required: 1. No additional passes are needed.
 
+---------------------------------------------------------------------|
+     Representation                        Complexity                |
+---------------------------------------------------------------------|
+       Sorted arrays                         O(m + n)                |
+                                                                     |
+       Hash sets                             O(min(m, n))            |
+                                                                     |
+---------------------------------------------------------------------|                                                                     
+
 3. How would the complexity change if we needed to support Unicode characters beyond
 ASCII?
 With Unicode, operations like isUppercase() and isLetter() may be more expensive than ASCII
