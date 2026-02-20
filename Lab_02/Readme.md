@@ -90,11 +90,38 @@ Only compute dot products over nonzero overlaps
 Reduces time complexity for sparse data to: O (U.avg_nonzero^2)
 3. What is the space complexity of storing the full matrix vs. sparse
 Representations?
----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------|
                Representation                         Space                            |
+---------------------------------------------------------------------------------------|               
                Full matrix                          O(U × I)                           |
           Sparserepresentation                 O(total_nonzero_entries).               |
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------|
+
+-------------------------Exercise 4 done by Anshul-------------------------
+
+Logic Explanation:
+In this exercise, the social network is modeled as a directed graph using an adjacency matrix. The adjacency matrix is implemented as a two-dimensional boolean array, where each cell represents a follow relationship between users.
+
+If matrix[i][j] is true, it indicates that user i follows user j. If it is false, no such relationship exists. This representation allows constant-time access for checking follow relationships.
+
+To find the followers of a particular user, the corresponding column of the matrix is scanned. Any user with a true value in that column is considered a follower. Similarly, to determine which users a particular user is following, the corresponding row of the matrix is scanned.
+
+Mutual followers are identified by checking pairs of users where both matrix[i][j] and matrix[j][i] are true. This represents a bidirectional relationship between users.
+
+An influence score is calculated to measure user activity and reach within the network. It is computed as the sum of the number of followers and the number of users being followed, divided by the total number of users in the network.
+
+Complexity Analysis Questions:
+1. What is the time complexity of Get_followers() and Get_following()?
+Answer: Get_followers() and Get_following()
+Time complexity: O(N)
+Must scan one row or column of size N
+Space complexity: O(F) for the list of followers/following (F ≤ N)
+2. What is the space complexity of the adjacency matrix for N users?
+Space complexity of adjacency matrix O(N^2) → each of the N×N entries store a Boolean.
+3. At what network size does this become impractical? Why?
+For large networks (millions of users), N^2 space becomes prohibitive
+Example: 1M users → 10^12 bits (~125 GB)
+For large-scale networks, adjacency lists or sparse matrix representations are preferred.
 
 
 
