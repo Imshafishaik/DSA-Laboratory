@@ -74,6 +74,28 @@ Because
 2) Scales well with large, sparse networks.
 3) Used by most real-world social graphs.
 
+-------------------------Exercise 3 done by Anshul-------------------------
+
+Logic Explanation:
+in this exercise, friend recommendation is based on the similarity of user interests. User interests are represented using a user–interest matrix, where each row corresponds to a user and each column corresponds to a specific interest. The value stored in each cell represents the level of interest of a user in a particular category on a scale from 0 to 10.
+Each user’s interests are treated as a multi-dimensional vector. To measure how similar two users are, cosine similarity is used. Cosine similarity calculates the cosine of the angle between two vectors, focusing on the similarity in interest patterns rather than absolute values. A higher cosine similarity value indicates that users have similar preferences, while a lower value indicates dissimilar interests.
+For friend recommendation, the similarity between a given user and all other users is computed. Existing friends and the user themself are excluded from consideration. The remaining users are sorted based on similarity scores, and the top K most similar users are recommended as potential friends.
+
+1. What is the time complexity of computing all pairwise similarities for U users and I interest?
+Time complexity of computing all pairwise similarities for U users and I interest is O (U^2.I)
+2. How would you optimize this for sparse matrices (most users have few
+interests)?
+Use sparse representations (list of (interest, strength) pairs)
+Only compute dot products over nonzero overlaps
+Reduces time complexity for sparse data to: O (U.avg_nonzero^2)
+3. What is the space complexity of storing the full matrix vs. sparse
+Representations?
+---------------------------------------------------------------------------------------
+               Representation                         Space                            |
+               Full matrix                          O(U × I)                           |
+          Sparserepresentation                 O(total_nonzero_entries).               |
+----------------------------------------------------------------------------------------
+
 
 
 
