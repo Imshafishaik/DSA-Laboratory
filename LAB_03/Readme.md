@@ -110,6 +110,67 @@ Operations:
 
 
 
+-------------------------Exercise 3 done by shafi-------------------------
+
+Logic Explanation:
+this will make trending posts based on engagement. when the post gets more likes, comments and shares then it becomes trending.
+Each Post node stores information such as post_id, user_id, content, timestamp, and engagement metrics including likes, comments, and shares.
+The engagement score is calculated using the formula: EngagementScore=(likes×1)+(comments×2)+(shares×3) Shares have the highest weight because they indicate stronger user engagement.
+The priority queue is implemented using a sorted singly linked list where nodes are arranged in descending order of engagement score.
+
+Complexity Analysis Answers
+Q1. Compare enqueue complexity
+Implementation	Complexity
+Sorted Linked List	O(n)
+Unsorted Linked List	O(1)
+However, retrieving max in unsorted list requires O(n).
+
+Q2. Worst case complexity of update_score
+Steps involved:
+Search node → O(n)
+Remove node → O(1)
+Reinsert → O(n)
+Total worst-case complexity:
+
+O(n)
+
+Optimization:
+Use binary heap priority queue = O(log n)
+
+Q3. Is sorted linked list practical for millions of posts?
+No.
+Reasons:
+Insert requires O(n) traversal.
+Frequent score updates cause repeated reordering.
+
+Poor scalability.
+Large platforms use:
+Heaps
+Distributed ranking algorithms
+
+Q4. Space complexity compared to normal linked list
+A priority queue node stores:
+data + engagement_score + next pointer
+Extra space required is minimal.
+
+Space complexity:
+O(n)
+
+Q5. Better structure for frequent score updates
+A Binary Heap is more efficient.
+Operations:
+
+------------------------------------------------
+      Operation	       Complexity.              |
+       Insert	            O(log n).           |
+       Extract max	        O(log n).           |
+      Update priority	    O(log n).           |
+------------------------------------------------
+
+Heaps handle frequent updates efficiently.
+
+
+
 
 
 
