@@ -57,4 +57,60 @@ These systems frequently move both forward and backward, making doubly
 linked lists beneficial.
 
 
+-------------------------Exercise 2 done by Anshul-------------------------
+
+Logic Explanation:
+Social media tracks recent activity with a stack (LIFO). New actions (like, comment, share,
+follow) are pushed onto the top. Users can pop () off or peek () at the latest activity. An
+undo stack holds popped actions.
+Notifications use a queue (FIFO) for sequential handling. New notifications enqueue () at
+the rear and are processed by dequeue () from the front. Urgent items use priority enqueue
+() to jump the line.
+
+Complexity Analysis Answers
+Q1. Compare time complexity of all operations
+-----------------------------------------------------------------------------
+           Operation                  Stack                   Queue.         |
+            Insert                     O(1)                    O(1)          |
+            Remove                     O(1)                    O(1)          |
+          Peek/Front                   O(1)                    O(1).         |
+-----------------------------------------------------------------------------
+Both stacks and queues support constant-time insertion and deletion.
+
+Q2. For a queue, which implementation (array circular buffer vs. linked list) is more memory efficient for unknown size?
+Linked list implementation is more memory efficient because:
+It dynamically allocates memory.
+It does not require fixed capacity.
+Arrays require reallocated memory and may waste space.
+
+Q3. What is the amortized time complexity of a sequence of n enqueue/dequeue Operations?
+For n enqueue and dequeue operations:
+Total cost = O(n)
+Thus amortized complexity per operation: O(1)
+
+Q4. How would you implement a deque (double-ended queue) to support both stack and queue operations?
+A Deque (Double Ended Queue) supports:
+Insert front
+Insert rear
+Delete front
+Delete rear
+
+Best implementation:
+
+Doubly Linked List
+
+Operations:
+-------------------------------------------------
+      Operation	                Complexity.      |
+     Insert Front	               O(1).         |
+     Insert Rear	               O(1)          |
+     Delete Front	               O(1)          |
+     Delete Rear	               O(1).         |
+-------------------------------------------------
+
+
+
+
+
+
 
