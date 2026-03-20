@@ -32,3 +32,35 @@ Recursive                Uses system call stack
 Iterative                 Uses explicit stack 
 
 Recursive version uses stack frames automatically, while iterative version stores states manually.
+
+
+-------------------------Exercise 4 done by Anshul-------------------------
+
+Logic Explanation:
+
+split the array in half at each step, solve each half independently, then combine results. This is the classic divide-and-conquer pattern. For merge sort, the combining step (merge) does the real work. For ind_peak_hour binary search works because the peak has the property that one neighbor is always smaller - we can determine which side the peak is on by comparing the midpoint with mid+1. 
+
+Complexity Analysis Answers
+
+Q1. What is the time complexity of recursive max_engagement? Prove it. 
+
+Ans: max_engagement time complexity: T(n) = 2T(n/2) + O(1) by Master Theorem = O(n). Every element is visited once 
+
+Q2. Compare recursive merge sort (O(n log n)) with iterative insertion sort (O(n²)) for sorting 10,000 posts 
+
+Ans: Merge sort O(n log n) vs insertion sort O(n²) on 10,000 posts: merge sort ≈ 133,000 ops vs insertion sort ≈ 100,000,000 ops — merge sort is ~750× faster. 
+
+ 
+
+Q3. What is the recursion depth for merge sort on n elements? 
+
+Ans: Recursion depth for merge sort O(log n) — the tree of calls is log₂(n) levels deep 
+
+
+Q4. For find_peak_hour, why can we use binary search-style recursion? What 
+
+property must the array satisfy? 
+
+Ans: find_peak_hour binary search justification works because if likes[mid] < likes[mid+1], the right side is increasing so a peak must exist there (and vice versa).  
+
+The array must be unimodal (rises then falls) — a global max with no plateaus of equal value. 
