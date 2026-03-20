@@ -1,4 +1,4 @@
-LAB-03                         Advanced Algorithms and Programming                             Team - 23
+LAB-04                         Advanced Algorithms and Programming                             Team - 23
 --------------------------------------------------------------------------------------------------------
 
 Team Members :- Shaik Shafi & Anshul Reddy
@@ -34,7 +34,7 @@ Iterative                 Uses explicit stack
 Recursive version uses stack frames automatically, while iterative version stores states manually.
 
 
--------------------------Exercise 4 done by Anshul-------------------------
+-------------------------Exercise 2 done by Anshul-------------------------
 
 Logic Explanation:
 
@@ -64,3 +64,55 @@ property must the array satisfy?
 Ans: find_peak_hour binary search justification works because if likes[mid] < likes[mid+1], the right side is increasing so a peak must exist there (and vice versa).  
 
 The array must be unimodal (rises then falls) — a global max with no plateaus of equal value. 
+
+
+-------------------------Exercise 3 done by shafi-------------------------
+
+Logic Explanation: 
+
+
+Posts should be ranked according to engagement level. 
+
+Engagement score formula: score = likes + 2×comments + 3×shares 
+
+Posts with higher scores appear earlier in the queue. 
+
+A sorted linked list is used to maintain this order. 
+
+
+Complexity Analysis Questions: 
+
+Q1. For a thread with depth d and total n comments, compare maximum stack 
+
+size needed for: 
+
+Recursive implementation 
+
+Iterative with explicit stack 
+
+Max stack size (depth d, total n comments):  
+
+Recursive: O(d) call frames — limited by Python's call stack (~1000 default) 
+
+Iterative: O(n) entries in the worst case — stored in a regular list, no system limit 
+
+ 
+
+Q2. When would you prefer recursive version? When iterative? 
+
+Prefer recursive when nesting depth is guaranteed small and readability matters. Prefer iterative whenever users control the nesting depth (unbounded input). 
+
+Q3. How does tail recursion conversion reduce stack usage? Can all recursive functions be made tail recursive? 
+
+passes the running total as a parameter instead of accumulating on return. Eliminates the need to "come back" to a call after it returns. Python does not optimize tail calls automatically, so count_comments_loop is the correct practical conversion — O(1) extra space per iteration. 
+
+ 
+
+Q4. Explain the state machine approach—why is it necessary for functions that process nested structures? 
+
+when processing a comment's replies, we push them onto the stack and move on. Later, when we finish all replies, we need to know "this comment is fully done." Without the DONE marker, there is no way to distinguish a freshly pushed comment from one whose replies are already queued — the state machine replaces the implicit position tracking that the call stack provides in recursion. 
+
+Q5. In a production social network with user-generated nested comments, which approach would you choose and why?  
+
+production choice: iterative with explicit stack — user-generated comment nesting is unbounded. A single thread nested 1000+ levels deep would crash the recursive version in Python with a Recursion Error. The iterative version handles any depth safely 
+
