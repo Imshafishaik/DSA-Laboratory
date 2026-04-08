@@ -7,6 +7,7 @@ Team Members :- Shaik Shafi & Anshul Reddy
 -------------------------Exercise 1 done by shafi-------------------------
 
 Logic & Approach
+
 A social network is modelled as an undirected graph where each user is a
 vertex and each friendship is an edge. Two representations are implemented
 simultaneously inside one SocialGraph class:
@@ -58,3 +59,26 @@ inserting/deleting from two sets - O(1) average with hash sets. With the matrix
 you also update two cells (O(1)), so both are technically O(1), but the list has
 better cache locality and does not require N² pre-allocated memory.
 
+
+-------------------------Exercise 2 done by Anshul-------------------------
+
+DFS explores as deep as possible along each branch before backtracking. In a social network this means: starting from a user, visit one of their friends, then one of that friend's friends, going as deep as possible before coming back. This naturally finds all users reachable from a starting point (a connected component), detects if a path exists, and finds the actual path. 
+
+Recursive DFS: uses the call stack. Clean and readable but risks RecursionError on deep graphs (Python default stack limit ~1000). 
+
+Iterative DFS: uses an explicit stack (a Python list). Same traversal order, no recursion limit, safe for any size. 
+
+Connected components: run DFS from every unvisited user. Each DFS call discovers one complete component. 
+
+Complexity Analysis Answers: 
+ 
+Q1 What is the time and space complexity of DFS on an adjacency list representation? On adjacency matrix? 
+
+Ans. Time and space complexity of DFS: 
+Adjacency List: O(V + E) time — each vertex is visited once (O(V)) and each edge is examined once from each endpoint (O(E)). Space: O(V) for the visited set and stack. 
+Adjacency Matrix: O(V²) time — for each vertex, scanning its entire row to find neighbors costs O(V), and this happens for all V vertices. Space: O(V) for visited and stack. 
+The adjacency list is strictly better for sparse graphs (where E << V²). 
+ 
+Q2. Why might recursive DFS cause problems in a social network with 1 million users? How would you solve it? 
+ 
+Ans. use iterative DFS with an explicit stack (as implemented above), or increase the limit with sys.setrecursionlimit() (risky — can crash the Python process by exhausting OS stack memory). 
