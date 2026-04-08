@@ -60,7 +60,7 @@ you also update two cells (O(1)), so both are technically O(1), but the list has
 better cache locality and does not require N² pre-allocated memory.
 
 
--------------------------Exercise 2 done by Anshul-------------------------
+-------------------------Exercise 2 done by Shafi-------------------------
 
 DFS explores as deep as possible along each branch before backtracking. In a social network this means: starting from a user, visit one of their friends, then one of that friend's friends, going as deep as possible before coming back. This naturally finds all users reachable from a starting point (a connected component), detects if a path exists, and finds the actual path. 
 
