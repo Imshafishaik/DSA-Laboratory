@@ -82,3 +82,31 @@ The adjacency list is strictly better for sparse graphs (where E << V²).
 Q2. Why might recursive DFS cause problems in a social network with 1 million users? How would you solve it? 
  
 Ans. use iterative DFS with an explicit stack (as implemented above), or increase the limit with sys.setrecursionlimit() (risky — can crash the Python process by exhausting OS stack memory). 
+
+
+-------------------------Exercise 3 done by Anshul-------------------------
+
+Logic & Approach 
+
+BFS explores the graph level by level - first all direct friends, then all friends-of-friends, and so on. Because it expands in order of distance, the first time it reaches a target node is guaranteed to be via the shortest possible path. This is the key property that makes BFS the correct algorithm for minimum degrees of separation. 
+A queue (FIFO) drives the exploration: enqueue the start user, then repeatedly dequeue a user and enqueue all their unvisited friends. 
+
+Complexity Analysis Answers: 
+ 
+Q1. What is the time and space complexity of BFS? How does it compare to DFS? 
+Ans: Time and space complexity of BFS: 
+
+Time: O(V + E) - every vertex is enqueued and dequeued once (O(V)), and every edge is examined once from each endpoint (O(E)). 
+
+Space: O(V) - the queue holds at most V nodes, the distances/visited dictionary holds at most V entries. 
+
+Compared to DFS: identical asymptotic complexity O(V + E), but BFS uses more memory in practice because it holds an entire level in the queue simultaneously. DFS uses O(depth) space which is often much less than O(V). 
+ 
+Q2. In an unweighted social network, why is BFS guaranteed to find the shortest path? 
+Ans: BFS expands nodes in non-decreasing order of distance from the source. When a node is first dequeued, all nodes at smaller distances have already been processed. Therefore the first time BFS reaches the target, it has taken the fewest possible edges to get there. This property breaks if edges have different weights — Dijkstra's algorithm is needed in that case. 
+ 
+Q3. For finding "six degrees of separation" between two users, would you use BFS or DFS? Why? 
+Ans: BFS is correct. DFS might find a path, but it is not guaranteed to find the shortest one - it follows one branch as deep as possible and could return a path of length 100 when the shortest path is 3. BFS always returns the minimum-edge path. 
+ 
+Q4. In a social network, would you use DFS or BFS to find the shortest friendship chain? Why? 
+Ans: BFS, for the same reason as above. the question asks "does a path exist", either works. If it asks for the shortest path, only BFS guarantees optimality in an unweighted graph. 
