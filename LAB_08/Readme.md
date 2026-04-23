@@ -22,3 +22,33 @@ Ans: For a square of side S, the depth of the tree is log_2(S). Since each call 
 2.What happens if points are all clustered in one corner? 
 Ans. The algorithm will still perform a full recursive split in that specific quadrant down to the min_size, while other empty quadrants might stop early if density isn't met, leading to an unbalanced tree. 
  
+
+-------------------------Exercise 3 done by shafi-------------------------
+
+Logic & Approach: 
+
+A Trie stores strings character by character. Each node represents one character. The path from root to a node spells out a prefix. A node marked is_end = True means a complete username ends there. Autocomplete works by navigating to the prefix node, then collecting all complete usernames in the subtree below it.
+
+
+Complexity Analysis Answers: 
+
+1.Time complexity of query(l, r)? Prove it.
+
+Navigate to prefix node: O(|prefix|)
+Collect all matches in subtree: O(total characters in all matching usernames)
+For max_results=m results each of average length L: O(|prefix| + m×L)
+Overall: O(|prefix| + output size)
+
+2.Space complexity of a segment tree for 365 days?
+
+Each character = one node; shared prefixes share nodes
+Worst case (no shared prefixes): 1M × 12 = 12 million nodes
+At ~60 bytes per node (Python dict + flags): ~720 MB
+With shared prefixes (realistic): significantly less — maybe 3–5 million nodes
+
+3.If you used a prefix sum array instead of a segment tree, what would be the
+cost of updates? When is each better?
+
+Hash map: search for exact key is O(L) — it cannot find all strings with a given prefix without scanning all keys O(n×L)
+Trie: prefix navigation in O(|prefix|), then collect all results in the subtree — inherently prefix-optimised
+Trie wins for any prefix-based operation; hash map wins only for exact-match lookup
