@@ -29,6 +29,8 @@ Logic & Approach:
 
 A Trie stores strings character by character. Each node represents one character. The path from root to a node spells out a prefix. A node marked is_end = True means a complete username ends there. Autocomplete works by navigating to the prefix node, then collecting all complete usernames in the subtree below it.
 
+A segment tree is a binary tree built over an array. Each leaf stores one day's activity. Each internal node stores the aggregate (sum, max, or min) of its range. A node covering range [l, r] has left child covering [l, mid] and right child covering [mid+1, r]. This allows any range query in O(log n) by combining at most O(log n) pre-computed segments.
+
 
 Complexity Analysis Answers: 
 

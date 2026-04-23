@@ -53,7 +53,6 @@ class AutocompleteTrie:
         if node.is_end_of_username:
             results.append((word, node.user_id))
 
-        # NOTE: Removed repeated sorting for efficiency
         for char in node.children:
             self._collect(node.children[char], word + char, results, max_results)
 
@@ -115,9 +114,6 @@ class AutocompleteTrie:
         if not node.children:
             return 0
         return 1 + max(self._height(c) for c in node.children.values())
-
-
-# ────────────────────────────────────────────────────────────────
 
 class ActivitySegmentTree:
     def __init__(self, activity_array):
@@ -224,11 +220,7 @@ class ActivitySegmentTree:
     def get_leaf_values(self):
         return list(self.data)
 
-
-# ────────────────────────────────────────────────────────────────
-
 def test_exercise3():
-    # Trie tests
     trie = AutocompleteTrie()
     trie.insert("alice", 1)
     trie.insert("alice123", 2)
@@ -268,7 +260,6 @@ def test_exercise3():
     trie.delete("xyz")
     assert trie.count_words() == 5
 
-    # Segment Tree tests
     data = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
     st = ActivitySegmentTree(data)
 
